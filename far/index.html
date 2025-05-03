@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D旋转花朵</title>
+    <style>
+        /* 重置默认边距与填充，保证尺寸计算准确 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* 强制页面占满视口，隐藏滚动条 */
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+            perspective: 1000px; /* 3D透视效果 */
+        }
+        .flower {
+            position: relative;
+            transform-style: preserve-3d; /* 保持子元素3D转换 */
+            animation: rotate 5s linear infinite; /* 3D旋转动画，5秒循环，匀速 */
+        }
+        .flower img {
+            width: 300px; /* 调整花朵图片宽度 */
+        }
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* 文字居中 */
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 文字阴影增强效果 */
+        }
+        @keyframes rotate {
+            from {
+                transform: rotateY(0deg); /* 绕Y轴旋转，初始角度 */
+            }
+            to {
+                transform: rotateY(360deg); /* 绕Y轴旋转360度，完成循环 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="flower">
+            <img src="flower.png" alt="花朵"> <!-- 请将花朵图片命名为flower.png并与HTML同目录 -->
+            <span class="text">我爱大哥</span> <!-- 显示的文字 -->
+        </div>
+    </div>
+</body>
+</html>
